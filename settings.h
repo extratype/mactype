@@ -365,6 +365,7 @@ private:
 
 	CFontLinkInfo m_fontlinkinfo;
 	CFontSubstitutesInfo m_FontSubstitutesInfo;
+	CFontSubstitutesInfo m_FontSubstitutesInfoForSys;
 
 	CGdippSettings()
 		: m_bHookChildProcesses(false)
@@ -437,8 +438,8 @@ public:
 	float ContrastForDW() const { return m_fContrastForDW;  }
 	float ClearTypeLevelForDW() const { return m_fClearTypeLevelForDW;  }
 	int RenderingModeForDW() const { return m_nRenderingModeForDW; }
-	/*const CFontSubstitutesInfo& GetFontSubstitutesInfoForDW() const
-		{ _ASSERTE(m_bDelayedInit); return m_FontSubstitutesInfoForDW; }*/
+	const CFontSubstitutesInfo& GetFontSubstitutesInfoForDW() const
+		{ _ASSERTE(m_bDelayedInit); return m_FontSubstitutesInfoForDW; }
 
 	float RenderWeight() const { return m_fRenderWeight; }
 	float Contrast() const { return m_fContrast; }
@@ -477,6 +478,9 @@ public:
 	}
 
 	bool CopyForceFont(LOGFONT& lf, const LOGFONT& lfOrg) const;
+    bool CopyForceFontForDW(LOGFONT& lf, const LOGFONT& lfOrg) const;
+    bool CopyForceFontForSys(LOGFONT& lf, const LOGFONT& lfOrg) const;
+    bool CopyForceFontForSysA(LOGFONTA& lf, const LOGFONTA& lfOrg) const;
 
 	//それ以外
 	bool IsWinXPorLater() const { return m_bIsWinXPorLater; }
@@ -507,6 +511,8 @@ public:
 		{ _ASSERTE(m_bDelayedInit); return m_fontlinkinfo; }
 	const CFontSubstitutesInfo& GetFontSubstitutesInfo() const
 		{ _ASSERTE(m_bDelayedInit); return m_FontSubstitutesInfo; }
+	const CFontSubstitutesInfo& GetFontSubstitutesInfoForSys() const
+		{ _ASSERTE(m_bDelayedInit); return m_FontSubstitutesInfoForSys; }
 };
 
 class CFontFaceNamesEnumerator
@@ -893,6 +899,7 @@ public:
 	{
 		CGdippSettings* pSettings = CGdippSettings::GetInstance();
 		ClearIndividual();
+		pSettings->m_FontSubstitutesInfoForSys.RemoveAll();
 		pSettings->m_FontSubstitutesInfoForDW.RemoveAll();
 		pSettings->m_FontSubstitutesInfo.RemoveAll();
 		pSettings->m_fontlinkinfo.clear();

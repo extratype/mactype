@@ -1678,7 +1678,59 @@ DWORD WINAPI IMPL_GetFontData(_In_ HDC     hdc,
 	return ret;
 }
 
+BOOL WINAPI IMPL_SystemParametersInfoW(UINT uiAction, UINT uiParam, PVOID pvParam, UINT fWinIni)
+{
+	BOOL ret = ORIG_SystemParametersInfoW(uiAction, uiParam, pvParam, fWinIni);
+	if (!ret)
+		return ret;
 
+	const CGdippSettings* pSettings = CGdippSettings::GetInstance();
+
+	if (uiAction == SPI_GETICONMETRICS) {
+		ICONMETRICSW* lpIconMetrics = reinterpret_cast<ICONMETRICSW*>(pvParam);
+		LOGFONTW* lplf = &lpIconMetrics->lfFont;
+		pSettings->CopyForceFontForSys(*lplf, *lplf);
+	} else if (uiAction == SPI_GETICONTITLELOGFONT) {
+		LOGFONTW* lplf = reinterpret_cast<LOGFONTW*>(pvParam);
+		pSettings->CopyForceFontForSys(*lplf, *lplf);
+	} else if (uiAction == SPI_GETNONCLIENTMETRICS) {
+		NONCLIENTMETRICSW* lpNonClientMetrics = reinterpret_cast<NONCLIENTMETRICSW*>(pvParam);
+		pSettings->CopyForceFontForSys(lpNonClientMetrics->lfCaptionFont, lpNonClientMetrics->lfCaptionFont);
+		pSettings->CopyForceFontForSys(lpNonClientMetrics->lfSmCaptionFont, lpNonClientMetrics->lfSmCaptionFont);
+		pSettings->CopyForceFontForSys(lpNonClientMetrics->lfMenuFont, lpNonClientMetrics->lfMenuFont);
+		pSettings->CopyForceFontForSys(lpNonClientMetrics->lfStatusFont, lpNonClientMetrics->lfStatusFont);
+		pSettings->CopyForceFontForSys(lpNonClientMetrics->lfMessageFont, lpNonClientMetrics->lfMessageFont);
+	}
+
+	return ret;
+}
+
+BOOL WINAPI IMPL_SystemParametersInfoA(UINT uiAction, UINT uiParam, PVOID pvParam, UINT fWinIni)
+{
+	BOOL ret = ORIG_SystemParametersInfoA(uiAction, uiParam, pvParam, fWinIni);
+	if (!ret)
+		return ret;
+
+	const CGdippSettings* pSettings = CGdippSettings::GetInstance();
+
+	if (uiAction == SPI_GETICONMETRICS) {
+		ICONMETRICSA* lpIconMetrics = reinterpret_cast<ICONMETRICSA*>(pvParam);
+		LOGFONTA* lplf = &lpIconMetrics->lfFont;
+		pSettings->CopyForceFontForSysA(*lplf, *lplf);
+	} else if (uiAction == SPI_GETICONTITLELOGFONT) {
+		LOGFONTA* lplf = reinterpret_cast<LOGFONTA*>(pvParam);
+		pSettings->CopyForceFontForSysA(*lplf, *lplf);
+	} else if (uiAction == SPI_GETNONCLIENTMETRICS) {
+		NONCLIENTMETRICSA* lpNonClientMetrics = reinterpret_cast<NONCLIENTMETRICSA*>(pvParam);
+		pSettings->CopyForceFontForSysA(lpNonClientMetrics->lfCaptionFont, lpNonClientMetrics->lfCaptionFont);
+		pSettings->CopyForceFontForSysA(lpNonClientMetrics->lfSmCaptionFont, lpNonClientMetrics->lfSmCaptionFont);
+		pSettings->CopyForceFontForSysA(lpNonClientMetrics->lfMenuFont, lpNonClientMetrics->lfMenuFont);
+		pSettings->CopyForceFontForSysA(lpNonClientMetrics->lfStatusFont, lpNonClientMetrics->lfStatusFont);
+		pSettings->CopyForceFontForSysA(lpNonClientMetrics->lfMessageFont, lpNonClientMetrics->lfMessageFont);
+	}
+
+	return ret;
+}
 
 
 //EOF

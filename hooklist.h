@@ -58,6 +58,9 @@ HOOK_DEFINE(DWORD, GetFontData, (_In_ HDC     hdc,
 	_In_ DWORD   cjBuffer
 	));
 
+HOOK_DEFINE(BOOL, SystemParametersInfoA, (UINT uiAction, UINT uiParam, PVOID pvParam, UINT fWinIni));
+HOOK_DEFINE(BOOL, SystemParametersInfoW, (UINT uiAction, UINT uiParam, PVOID pvParam, UINT fWinIni));
+
 /*
 
 HOOK_MANUALLY(LONG, LdrLoadDll, (IN PWCHAR               PathToFile OPTIONAL,
