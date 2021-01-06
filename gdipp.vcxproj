@@ -173,8 +173,8 @@
     <LinkIncremental>true</LinkIncremental>
     <GenerateManifest>false</GenerateManifest>
     <TargetName>$(ProjectName).Core</TargetName>
-    <IncludePath>$(INI_PARSER_PATH);$(FREETYPE_PATH)\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)deps\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)deps\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug Infinality|Win32'">
     <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
@@ -182,8 +182,8 @@
     <LinkIncremental>true</LinkIncremental>
     <GenerateManifest>false</GenerateManifest>
     <TargetName>$(ProjectName).Core</TargetName>
-    <IncludePath>$(INI_PARSER_PATH);$(FREETYPE_PATH)\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)deps\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)deps\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
@@ -191,8 +191,8 @@
     <LinkIncremental>true</LinkIncremental>
     <GenerateManifest>false</GenerateManifest>
     <TargetName>$(ProjectName)64.Core</TargetName>
-    <IncludePath>$(INI_PARSER_PATH);$(FREETYPE_PATH)\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)deps\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)deps\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug Infinality|x64'">
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
@@ -200,8 +200,8 @@
     <LinkIncremental>true</LinkIncremental>
     <GenerateManifest>false</GenerateManifest>
     <TargetName>$(ProjectName)64.Core</TargetName>
-    <IncludePath>$(INI_PARSER_PATH);$(FREETYPE_PATH)\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)deps\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)deps\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
@@ -209,8 +209,8 @@
     <LinkIncremental>true</LinkIncremental>
     <GenerateManifest>false</GenerateManifest>
     <TargetName>$(ProjectName)64.Core</TargetName>
-    <IncludePath>$(INI_PARSER_PATH);$(FREETYPE_PATH)\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)deps\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)deps\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug Infinality|ARM'">
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
@@ -218,8 +218,8 @@
     <LinkIncremental>true</LinkIncremental>
     <GenerateManifest>false</GenerateManifest>
     <TargetName>$(ProjectName)64.Core</TargetName>
-    <IncludePath>$(INI_PARSER_PATH);$(FREETYPE_PATH)\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)deps\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)deps\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
@@ -227,8 +227,8 @@
     <LinkIncremental>false</LinkIncremental>
     <GenerateManifest>false</GenerateManifest>
     <TargetName>$(ProjectName).Core</TargetName>
-    <IncludePath>$(INI_PARSER_PATH);$(FREETYPE_PATH)\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)deps\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)deps\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release Infinality|Win32'">
     <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
@@ -236,8 +236,8 @@
     <LinkIncremental>false</LinkIncremental>
     <GenerateManifest>false</GenerateManifest>
     <TargetName>$(ProjectName).Core</TargetName>
-    <IncludePath>$(INI_PARSER_PATH);$(FREETYPE_PATH)\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)deps\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)deps\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
@@ -245,8 +245,8 @@
     <LinkIncremental>false</LinkIncremental>
     <GenerateManifest>false</GenerateManifest>
     <TargetName>$(ProjectName)64.Core</TargetName>
-    <IncludePath>$(INI_PARSER_PATH);$(FREETYPE_PATH)\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)deps\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)deps\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release Infinality|x64'">
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
@@ -254,8 +254,8 @@
     <LinkIncremental>false</LinkIncremental>
     <GenerateManifest>false</GenerateManifest>
     <TargetName>$(ProjectName)64.Core</TargetName>
-    <IncludePath>$(INI_PARSER_PATH);$(FREETYPE_PATH)\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)deps\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)deps\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
@@ -263,8 +263,8 @@
     <LinkIncremental>false</LinkIncremental>
     <GenerateManifest>false</GenerateManifest>
     <TargetName>$(ProjectName)64.Core</TargetName>
-    <IncludePath>$(INI_PARSER_PATH);$(FREETYPE_PATH)\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)deps\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)deps\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release Infinality|ARM'">
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
@@ -272,8 +272,8 @@
     <LinkIncremental>false</LinkIncremental>
     <GenerateManifest>false</GenerateManifest>
     <TargetName>$(ProjectName)64.Core</TargetName>
-    <IncludePath>$(INI_PARSER_PATH);$(FREETYPE_PATH)\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)deps\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)deps\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
