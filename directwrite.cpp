@@ -1393,7 +1393,7 @@ bool hookDirectWrite(IUnknown ** factory)	//此函数需要改进以判断是否
 		HOOK(pDWriteFactory, GetGdiInterop, 17);
 		const CGdippSettings* pSettings = CGdippSettings::GetInstance();
 		// Windows8/8.1 is too buggy, GDIinterpo doesn't work correctly
-		if (!pSettings->IsWindows81() && !pSettings->IsWindows8() && pSettings->DelayedInited() && pSettings->GetFontSubstitutesInfo().GetSize())
+		if (!pSettings->IsWindows81() && !pSettings->IsWindows8() && pSettings->DelayedInited() && pSettings->GetFontSubstitutesInfoForDW().GetSize())
 			hookFontCreation(pDWriteFactory);
 		MyDebug(L"DW1 hooked");
 
@@ -1624,7 +1624,7 @@ HRESULT WINAPI IMPL_CreateFontFace(IDWriteFont* self,
 		if (FAILED(g_pGdiInterop->ConvertFontFaceToLOGFONT(*fontFace, &lf)))
 			return ret;
 		const CGdippSettings* pSettings = CGdippSettings::GetInstance();
-		if (pSettings->CopyForceFont(lf, lf))
+		if (pSettings->CopyForceFontForDW(lf, lf))
 		{
 			IDWriteFont* writefont = NULL;
 			if (FAILED(g_pGdiInterop->CreateFontFromLOGFONT(&lf, &writefont)))
@@ -1643,7 +1643,7 @@ bool SubstituteDWriteFont3(__out IDWriteFontFace3** fontFace3)
 	if (FAILED(g_pGdiInterop->ConvertFontFaceToLOGFONT(*fontFace3, &lf)))
 		return false;
 	const CGdippSettings* pSettings = CGdippSettings::GetInstance();
-	if (pSettings->CopyForceFont(lf, lf))
+	if (pSettings->CopyForceFontForDW(lf, lf))
 	{
 		CComPtr<IDWriteFont> writefont;
 		if (FAILED(g_pGdiInterop->CreateFontFromLOGFONT(&lf, &writefont)))
@@ -1698,7 +1698,7 @@ HRESULT  WINAPI IMPL_CreateTextFormat(IDWriteFactory* self,
 	LOGFONT lf = { 0 };
 	StringCchCopy(lf.lfFaceName, LF_FACESIZE, fontFamilyName);
 	const CGdippSettings* pSettings = CGdippSettings::GetInstance();
-	if (pSettings->CopyForceFont(lf, lf))
+	if (pSettings->CopyForceFontForDW(lf, lf))
 		return ORIG_CreateTextFormat(self, lf.lfFaceName, fontCollection, fontWeight, fontStyle, fontStretch, fontSize, localeName, textFormat);
 	else
 		return ORIG_CreateTextFormat(self, fontFamilyName, fontCollection, fontWeight, fontStyle, fontStretch, fontSize, localeName, textFormat);

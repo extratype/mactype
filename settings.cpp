@@ -1186,6 +1186,30 @@ bool CGdippSettings::CopyForceFont(LOGFONT& lf, const LOGFONT& lfOrg) const
 	return bForceFont;
 }
 
+bool CGdippSettings::CopyForceFontForDW(LOGFONT& lf, const LOGFONT& lfOrg) const
+{
+	_ASSERTE(m_bDelayedInit);
+	//__asm{ int 3 }
+	GetEnvironmentVariableW(L"MACTYPE_FONTSUBSTITUTES_ENV", NULL, 0);
+	if (GetLastError()!=ERROR_ENVVAR_NOT_FOUND)
+		return false;
+	//&lf == &lfOrgも可
+	bool bForceFont = !!GetForceFontName();
+	BOOL bFontExist = true;
+	const LOGFONT *lplf;
+	if (bForceFont) {
+		lplf = &m_lfForceFont;
+	} else {
+		lplf = GetFontSubstitutesInfoForDW().lookup((LOGFONT&)lfOrg);
+		if (lplf) bForceFont = true;
+	}
+	if (bForceFont) {
+		memcpy(&lf, &lfOrg, sizeof(LOGFONT)-sizeof(lf.lfFaceName));
+		StringCchCopy(lf.lfFaceName, LF_FACESIZE, lplf->lfFaceName);
+	}
+	return bForceFont;
+}
+
 bool CGdippSettings::CopyForceFontForSys(LOGFONT& lf, const LOGFONT& lfOrg) const
 {
 	_ASSERTE(m_bDelayedInit);

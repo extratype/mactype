@@ -917,6 +917,7 @@ public:
 		CGdippSettings* pSettings = CGdippSettings::GetInstance();
 		extern HINSTANCE g_dllInstance;
 		pSettings->m_arrIndividual.RemoveAll();
+		pSettings->m_FontSubstitutesInfoForSys.RemoveAll();
 		pSettings->m_FontSubstitutesInfoForDW.RemoveAll();
 		pSettings->m_FontSubstitutesInfo.RemoveAll();
 		pSettings->m_fontlinkinfo.clear();
