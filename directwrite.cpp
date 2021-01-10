@@ -1375,6 +1375,13 @@ bool hookFontCreation(CComPtr<IDWriteFactory>& pDWriteFactory) {
 	} else {
 		// IDWriteFont::CreateFontFace just wraps this
 		HOOK(dfont3, CreateFontFace, 19);
+
+		CComPtr<IDWriteFontFaceReference> ffref;
+		if (SUCCEEDED(dfont3->GetFontFaceReference(&ffref))) {
+			// Same as IDWriteFontFaceReference1::CreateFontFace
+			HOOK(ffref, DWriteFontFaceReference_CreateFontFace, 3);
+			HOOK(ffref, DWriteFontFaceReference_CreateFontFaceWithSimulations, 4);
+		}
 	}
 	return true;
 }
@@ -1606,7 +1613,7 @@ HRESULT WINAPI IMPL_CreateFontFace(IDWriteFont* self,
 	HRESULT ret = ORIG_CreateFontFace(self, fontFace);
 	if (ret == S_OK)
 	{
-		/*static bool loaded = [&] {
+		static bool loaded = [&] {
 			CComPtr<IDWriteFontFace3> dfont3 = NULL;
 			HRESULT hr = self->QueryInterface(&dfont3);
 			if (SUCCEEDED(hr)) {
@@ -1618,7 +1625,7 @@ HRESULT WINAPI IMPL_CreateFontFace(IDWriteFont* self,
 				}
 			}
 			return true;
-		}();*/
+		}();
 
 		LOGFONT lf = { 0 };
 		if (FAILED(g_pGdiInterop->ConvertFontFaceToLOGFONT(*fontFace, &lf)))
